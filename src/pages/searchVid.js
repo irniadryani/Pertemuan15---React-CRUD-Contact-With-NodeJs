@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "../components/youtubeClone/SearchForm";
 import VideoPlayer from "../components/youtubeClone/VideoPlayer";
-import VideoThumbnail from "../components/youtubeClone/VideoThumbnail";
+import VideoThumbnail from "../components/youtubeClone/VideooThumbnail";
 import { youtubeApi } from "../api/youtubeApi";
 
 
