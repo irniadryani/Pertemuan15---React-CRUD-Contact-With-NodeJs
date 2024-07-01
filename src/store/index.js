@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { composeWithDevTools } from '@redux-devtools/extension'; // Extension untuk debugging kode
 
 // Reducer untuk action pada button dengan state awal bernilai 0
 const rootReducer = (state = 0, action) => {
@@ -8,13 +9,17 @@ const rootReducer = (state = 0, action) => {
     case "DECREMENT":
       return state - 1;
     case "RESET":
-      return (state = 0);
+      return 0;
     default:
       return state;
   }
 };
 
 // Store
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
+
+
+
+

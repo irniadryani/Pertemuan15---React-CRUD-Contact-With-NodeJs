@@ -98,6 +98,20 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      <div className="card bg-base-100 w-full shadow-xl mb-3">
+        <div className="card-body">
+          <div className="card-actions justify-end"></div>
+          <div>
+            <div className="card flex flex-row gap-5 w-full">
+              <p className="text-start items-center font-bold">React Final Form</p>
+              <Link to="/reactFinalForm" className="btn btn-warning justify-end items-center">
+                Check
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

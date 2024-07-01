@@ -13,6 +13,7 @@ import Redux from '../src/components/reduxCounter/Redux';
 import Comment from '../src/components/comment/ListComment';
 import Form from '../src/components/formInput/FormView';
 import SearchImage from "../src/pages/imagesSearch";
+import ReactFinalForm from "../src/components/reactFinalForm/formContainer";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/comment' exact element={<Comment />}/>
           <Route path='/form' exact element={<Form />}/>
           <Route path='/searchImg' exact element={<SearchImage />}/>
+          <Route path='/reactFinalForm' exact element={<ReactFinalForm />}/>
         </Routes>
       </Router>
     </Provider>
