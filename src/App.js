@@ -14,6 +14,7 @@ import Comment from '../src/components/comment/ListComment';
 import Form from '../src/components/formInput/FormView';
 import SearchImage from "../src/pages/imagesSearch";
 import ReactFinalForm from "../src/components/reactFinalForm/formContainer";
+import AnotherReactFinalForm from "../src/components/reactFinalForm/formDisplay"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path='/form' exact element={<Form />}/>
           <Route path='/searchImg' exact element={<SearchImage />}/>
           <Route path='/reactFinalForm' exact element={<ReactFinalForm />}/>
+          <Route path='/anotherReactFinarForm' exact element={<AnotherReactFinalForm />}/>
         </Routes>
       </Router>
     </Provider>

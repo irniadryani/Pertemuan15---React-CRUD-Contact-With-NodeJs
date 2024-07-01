@@ -1,31 +1,27 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-import React from 'react'
-import { render } from 'react-dom'
-import Styles from './Styles'
-import { Form, Field } from 'react-final-form'
+import React from 'react'; // Import React library untuk membuat komponen React
+import { render } from 'react-dom'; // Import fungsi render dari react-dom untuk me-render komponen ke DOM
+import Styles from './Styles'; // Import komponen Styles dari file ./Styles.js
+import { Form, Field } from 'react-final-form'; // Import Form dan Field dari react-final-form untuk membuat formulir
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+// Fungsi sleep untuk menunda eksekusi dengan menggunakan Promise
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+// Fungsi onSubmit yang dijalankan saat formulir disubmit, menggunakan async-await untuk menunggu sleep
 const onSubmit = async values => {
-  await sleep(300)
-  window.alert(JSON.stringify(values, 0, 2))
+  await sleep(300); // Menunda eksekusi selama 300ms
+  window.alert(JSON.stringify(values, 0, 2)); // Menampilkan nilai formulir dalam alert dengan format JSON
 }
 
-const App = () => (
-  <Styles>
-    <h1>React Final Form - Simple Example</h1>
-    <a
-      href="https://final-form.org/react"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Read Docs
-    </a>
+export default function formDisplay() {
+  return (
+    <div>  <Styles>
+    <h1 className='font-bold text-lg my-10'>Employee Form</h1> 
     <Form
-      onSubmit={onSubmit}
-      initialValues={{ stooge: 'larry', employed: false }}
-      render={({ handleSubmit, form, submitting, pristine, values }) => (
+      onSubmit={onSubmit} // Menggunakan fungsi onSubmit ketika formulir disubmit
+      initialValues={{ stooge: '', employed: false }} // Nilai awal untuk formulir
+      render={({ handleSubmit, form, submitting, pristine, values }) => ( // Menggunakan render prop dari react-final-form
         <form onSubmit={handleSubmit}>
+          {/* Input untuk First Name */}
           <div>
             <label>First Name</label>
             <Field
@@ -35,6 +31,7 @@ const App = () => (
               placeholder="First Name"
             />
           </div>
+          {/* Input untuk Last Name */}
           <div>
             <label>Last Name</label>
             <Field
@@ -44,124 +41,127 @@ const App = () => (
               placeholder="Last Name"
             />
           </div>
+          {/* Checkbox untuk status Employed */}
           <div>
             <label>Employed</label>
             <Field name="employed" component="input" type="checkbox" />
           </div>
+          {/* Select box untuk pendidikan (Education) */}
           <div>
-            <label>Favorite Color</label>
-            <Field name="favoriteColor" component="select">
-              <option />
-              <option value="#ff0000">❤️ Red</option>
-              <option value="#00ff00">💚 Green</option>
-              <option value="#0000ff">💙 Blue</option>
+            <label>Education</label>
+            <Field name="education" component="select">
+              <option /> {/* Opsi kosong */}
+              <option value="highschool">High School</option>
+              <option value="bachelor">Bachelor's Degree</option>
+              <option value="master">Master's Degree</option>
             </Field>
           </div>
+          {/* Checkbox untuk Expertise */}
           <div>
-            <label>Toppings</label>
-            <Field name="toppings" component="select" multiple>
-              <option value="chicken">🐓 Chicken</option>
-              <option value="ham">🐷 Ham</option>
-              <option value="mushrooms">🍄 Mushrooms</option>
-              <option value="cheese">🧀 Cheese</option>
-              <option value="tuna">🐟 Tuna</option>
-              <option value="pineapple">🍍 Pineapple</option>
-            </Field>
-          </div>
-          <div>
-            <label>Sauces</label>
+            <label>Expertise</label>
             <div>
               <label>
                 <Field
-                  name="sauces"
+                  name="HTML"
                   component="input"
                   type="checkbox"
-                  value="ketchup"
+                  value="HTML"
                 />{' '}
-                Ketchup
+                HTML
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="CSS"
                   component="input"
                   type="checkbox"
-                  value="mustard"
+                  value="CSS"
                 />{' '}
-                Mustard
+                CSS
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="javascript"
                   component="input"
                   type="checkbox"
-                  value="mayonnaise"
+                  value="javascript"
                 />{' '}
-                Mayonnaise
+                Javascript
               </label>
               <label>
                 <Field
-                  name="sauces"
+                  name="nodejs"
                   component="input"
                   type="checkbox"
-                  value="guacamole"
+                  value="nodejs"
                 />{' '}
-                Guacamole 🥑
+                NodeJs
+              </label>
+              <label>
+                <Field
+                  name="reactjs"
+                  component="input"
+                  type="checkbox"
+                  value="reactjs"
+                />{' '}
+                ReactJs 
               </label>
             </div>
           </div>
+          {/* Radio button untuk Preferred Technology */}
           <div>
-            <label>Best Stooge</label>
+            <label>Preferred <br /> Technology</label>
             <div>
               <label>
                 <Field
                   name="stooge"
                   component="input"
                   type="radio"
-                  value="larry"
+                  value="frontend"
                 />{' '}
-                Larry
+                Frontend
               </label>
               <label>
                 <Field
                   name="stooge"
                   component="input"
                   type="radio"
-                  value="moe"
+                  value="backend"
                 />{' '}
-                Moe
+                Backend
               </label>
               <label>
                 <Field
                   name="stooge"
                   component="input"
                   type="radio"
-                  value="curly"
+                  value="fullstack"
                 />{' '}
-                Curly
+                Fullstack
               </label>
             </div>
           </div>
+          {/* Textarea untuk catatan (Notes) */}
           <div>
             <label>Notes</label>
             <Field name="notes" component="textarea" placeholder="Notes" />
           </div>
+          {/* Tombol untuk submit dan reset formulir */}
           <div className="buttons">
             <button type="submit" disabled={submitting || pristine}>
               Submit
             </button>
             <button
               type="button"
-              onClick={form.reset}
+              onClick={form.reset} // Menggunakan form.reset untuk mereset formulir
               disabled={submitting || pristine}
             >
               Reset
             </button>
           </div>
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
+          <pre>{JSON.stringify(values, 0, 2)}</pre> {/* Menampilkan nilai formulir dalam bentuk JSON */}
         </form>
       )}
     />
-  </Styles>
-)
-
-render(<App />, document.getElementById('root'))
+  </Styles></div> 
+  )
+}
